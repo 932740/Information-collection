@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8081:3000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - PORT=3000
+      - DATABASE_PATH=/app/data/info-collection.db
+      - JWT_SECRET=change-me-in-production
+      - ADMIN_USERNAME=admin
+      - PYTHON_SERVICE_URL=http://localhost:8000
